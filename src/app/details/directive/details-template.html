@@ -1,0 +1,15 @@
+<div class="container">
+  <main class="text-center mainDetailsView">
+    <h2>{{film.name}}</h2>
+    <div class="text-center">
+      <img ng-src="{{film.affichefile}}" alt="Pas d'affiche disponible">
+    </div>
+    <ul class="list-unstyled">
+      <li>Sorti le : {{film.releaseDate | date : mediumDate}}</li>
+      <li>Réalisé par : {{film.realisator}}</li>
+      <li>Avec : <span ng-repeat="actor in film.actors">{{actor}}</span></li>
+      <li>Avis sur le film : {{film.rating}}</li>
+    </ul>
+    <a class="btn btn-default btn-sm btn-primary btn-return" ng-href="/#/">Retour à la liste</a>
+  </main>
+</div>

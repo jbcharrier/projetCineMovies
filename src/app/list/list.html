@@ -1,28 +1,2 @@
-<div class="container">
-  <main class="text-left mainListView">
 
-    <h2 class="titre-page-h2">Liste des films de Ciné-Movies</h2>
-
-    <div class="form-horizontal text-left">
-      <div class="form-group">
-        <label for="filter1" class="col-sm-4 control-label">Filtre par titre de film</label>
-        <div class="col-sm-8">
-          <input type="text" class="form-control filtre-list" id="filter1" ng-model="mySearch" placeholder="Nom du film">
-        </div>
-      </div>
-    </div>
-    <ul class="list-unstyled">
-      <li ng-repeat="film in films | filter:{name:mySearch}" class="filmInList">
-        <div class="col-sm-4">
-        <h6>{{ film.name }}</h6>
-        </div>
-        <div class="col-sm-8 text-right">
-        <a class="btn btn-default film-list" ng-href="#/details/{{film.name}}">Détails du film</a>
-        <a class="btn btn-primary film-list" ng-href="#/edit/{{film.name}}">Modifier</a>
-        <a class="btn btn-warning film-list" ng-href="#/delete/{{film.name}}">Supprimer</a>
-        </div>
-      </li>
-    </ul>
-    <a class="btn btn-lg btn-success addFilmBtn" ng-href="#/create">Ajouter un film</a>
-  </main>
-</div>
+<list-film-dir></list-film-dir>
