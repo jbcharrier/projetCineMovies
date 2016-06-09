@@ -18,7 +18,6 @@ angular.module('projetCineFilms')
     accessBdd();
 
 
-
 ////////////////////////////////
 ///////////// CRUD /////////////
 ////////////////////////////////
@@ -77,7 +76,8 @@ angular.module('projetCineFilms')
     });
 
     function createFilm(film){
-      console.log(film);
+      console.log(fileToUpload);
+      var dateRealase = film.releaseDate.getTime();
       var myNewFilm = {
         "actors": {
           "name": film.actors
@@ -85,7 +85,7 @@ angular.module('projetCineFilms')
         "name": film.name,
         "rating": film.rating,
         "realisator": film.realisator,
-        "releaseDate": film.releaseDate.getTime(),
+        "releaseDate": dateRealase,
         "affichefile": fileToUpload
       };
 
