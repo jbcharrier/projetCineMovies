@@ -85,11 +85,11 @@ angular.module('projetCineFilms')
     });
 
     function createFilm(film){
+      console.log(film);
       var myNewFilm = {
         "actors": {
           "name": film.actors
         },
-        "affiche": film.affiche,
         "name": film.name,
         "rating": film.rating,
         "realisator": film.realisator,

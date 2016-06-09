@@ -2,7 +2,7 @@
 
 angular.module('projetCineFilms')
   .controller('ListCtrl', function ($scope, DataFilm, $routeParams) {
-    
+
     DataFilm.hasLoaded().then(function(){
       $scope.films = DataFilm.listFilms();
     }, function(){
@@ -10,5 +10,4 @@ angular.module('projetCineFilms')
     });
 
     $scope.delete = DataFilm.eraseFilm($routeParams.id);
-    
   });

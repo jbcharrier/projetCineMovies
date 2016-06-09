@@ -6,13 +6,13 @@
       <div class="form-group">
         <label for="inputText0" class="col-sm-2 control-label">Titre</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputText0" ng-model="film.name" placeholder="Nom du réalisateur">
+          <input type="text" class="form-control" id="inputText0" ng-model="film.name" placeholder="Titre du film">
         </div>
       </div>
       <div class="form-group">
         <label for="inputText1" class="col-sm-2 control-label">Affiche du film</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputText1" ng-model="film.affiche" placeholder="Affiche du film">
+          <img ng-src="{{film.affichefile}}" alt="Pas d'affiche disponible" id="inputText1" width="100px" height="150px">
         </div>
       </div>
       <div class="form-group">
