@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('projetCineFilms')
-  .controller('EditCtrl', function ($scope, $routeParams, DataFilm) {
+  .controller('EditCtrl', function ($scope, $routeParams, DataFilm, RATING) {
 
+    $scope.filmRating = RATING;
 
     DataFilm.hasLoaded().then(function(){
       $scope.film = DataFilm.details($routeParams.id);
@@ -14,10 +15,4 @@ angular.module('projetCineFilms')
       DataFilm.updateFilm(film)
     };
 
-    $scope.filmRating = [
-      {label: "*", value: "Nul"},
-      {label: "**", value: "Bof"},
-      {label: "***", value: "Pas mal"},
-      {label: "****", value: "Top"},
-      {label: "*****", value: "Chef d'oeuvre"}];
   });
