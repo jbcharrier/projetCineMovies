@@ -17,14 +17,6 @@ angular.module('projetCineFilms')
     };
     accessBdd();
 
-    // bddRef.authWithPassword(user, function (error, authData) {
-    //   if (error) {
-    //     console.log("Login Failed !", error);
-    //   } else {
-    //     console.log("Authenticated successfully with payload:", authData);
-    //     accessBdd();
-    //   }
-    // });
 
 
 ////////////////////////////////
@@ -93,17 +85,14 @@ angular.module('projetCineFilms')
         "name": film.name,
         "rating": film.rating,
         "realisator": film.realisator,
-        "releaseDate": film.releaseDate,
+        "releaseDate": film.releaseDate.getTime(),
         "affichefile": fileToUpload
       };
-      // if(!fileToUpload){
-      //   myNewFilm.affichefile = null;
-      // }
+
       datas.$add(myNewFilm).then(function (){
         console.log('The new film is now saved in the database !');
       });
     }
-
 
     return {
       connection: datas,

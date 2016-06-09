@@ -6,7 +6,7 @@ angular.module('projetCineFilms')
       DataFilm.newFilm(film);
     };
     $scope.filmRating = [
-      {label: "*", value: "Nanar"},
+      {label: "*", value: "Nul"},
       {label: "**", value: "Bof"},
       {label: "***", value: "Pas mal"},
       {label: "****", value: "Top"},

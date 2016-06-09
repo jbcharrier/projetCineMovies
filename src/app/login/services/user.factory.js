@@ -17,13 +17,13 @@ angular.module('projetCineFilms')
       });
     };
   }
-  
+
   return {
     connect: connect(),
     validConnection: function(){
       if(!user){
-        if(authRef.$getAuth().uid){
-          user = new ConnectedUser(authRef.$getAuth().uid, authRef.getAuth().password.email);
+        if(authRef.$getAuth()){
+          user = new ConnectedUser(authRef.$getAuth().uid, authRef.$getAuth().password.email);
         }
         else {
           $location.path('/login')
