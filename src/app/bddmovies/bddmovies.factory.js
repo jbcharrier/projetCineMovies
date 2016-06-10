@@ -1,10 +1,10 @@
 angular.module('projetCineFilms')
   .factory('DataFilm', function ($firebaseArray, $q, SERVER_URL) {
 
+    
 ////////////////////////////////////////////
 ///////////////// Load BDD /////////////////
 ////////////////////////////////////////////
-
 
     var bddRef = new Firebase(SERVER_URL);
     var datas = [];
@@ -60,8 +60,8 @@ angular.module('projetCineFilms')
 ///////////// Upload de l'affiche et Create /////////////
 /////////////////////////////////////////////////////////
 
-    var fileInput = $('#file-upload');
     var fileToUpload = null;
+    var fileInput = $('#file-upload');
 
     fileInput.change(function(){
       var file = $(this).get(0).files[0];
@@ -76,19 +76,20 @@ angular.module('projetCineFilms')
     });
 
     function createFilm(film){
-      console.log(fileToUpload);
       var dateRealase = film.releaseDate.getTime();
       var myNewFilm = {
         "actors": {
           "name": film.actors
         },
         "name": film.name,
+        "affichefile": fileToUpload,
         "rating": film.rating,
         "realisator": film.realisator,
-        "releaseDate": dateRealase,
-        "affichefile": fileToUpload
+        "releaseDate": dateRealase
       };
-
+      if(!film.affiche){
+        myNewFilm.affichefile = null;
+      }
       datas.$add(myNewFilm).then(function (){
         console.log('The new film is now saved in the database !');
       });

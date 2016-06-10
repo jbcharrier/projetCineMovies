@@ -5,6 +5,9 @@ angular.module('projetCineFilms')
     return {
       restrict: 'E',
       templateUrl: 'app/list/directive/list-template.html',
+      scope: {
+        data:'='
+      },
       controller: function($scope, DataFilm, $routeParams){
 
         DataFilm.hasLoaded().then(function(){

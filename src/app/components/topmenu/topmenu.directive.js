@@ -3,7 +3,7 @@
 angular.module('projetCineFilms')
 .directive('topMenu', function () {
   return {
-    templateUrl: 'app/components/topmenu/menu.html',
+    templateUrl: 'app/components/topmenu/menu.template.html',
     restrict: 'E',
     controller : function($scope, user) {
 
