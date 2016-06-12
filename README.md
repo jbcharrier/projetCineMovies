@@ -15,8 +15,10 @@ $ git clone https://github.com/jbcharrier/projetCineMovies.git
 ```
 1.Then, install NodeJS 
 $ sudo apt-get install nodejs
+
 2.Then, install npm 
 $ sudo apt-get install npm
+
 3.And finally, install bower 
 $ npm install bower examples
 ```
