@@ -5,7 +5,7 @@ With AngularJS, GulpJS, BootstrapJS, Firebase, ...**
 
 ### Getting Started
 
-*First, clone this repository*
+First, clone this repository
 ```
 $ git clone https://github.com/jbcharrier/projetCineMovies.git
 ```
@@ -13,23 +13,23 @@ $ git clone https://github.com/jbcharrier/projetCineMovies.git
 
 ### Prerequisities
 ```
-* 1.Then, install NodeJS *
+1.Then, install NodeJS 
 $ sudo apt-get install nodejs
-* 2.Then, install npm *
+2.Then, install npm 
 $ sudo apt-get install npm
-* 3.And finally, install bower *
+3.And finally, install bower 
 $ npm install bower examples
 ```
 
 ### Installing
 ```
-*To launch the application :*
+To launch the application :
 $ gulp serve
 ```
 
 ### Authentication
 ```
-*You can log with the following account :*
+You can log with the following account :
 email : test@test.com
 password : test
 ```
