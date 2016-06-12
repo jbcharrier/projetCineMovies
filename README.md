@@ -1,6 +1,6 @@
 ## The Ciné-Movies Application
 
-**Welcome in the ciné-movies application repository. A web-application for creating a movies database.
+**Welcome in the Ciné-Movies application repository. A web-application for creating a movies database.
 With AngularJS, GulpJS, BootstrapJS, Firebase, ...**
 
 ### Getting Started
