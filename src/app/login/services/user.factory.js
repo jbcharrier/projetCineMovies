@@ -21,6 +21,7 @@ angular.module('projetCineFilms')
   return {
     connect: connect(),
     validConnection: function(){
+      console.log(user);
       if(!user){
         if(authRef.$getAuth()){
           user = new ConnectedUser(authRef.$getAuth().uid, authRef.$getAuth().password.email);

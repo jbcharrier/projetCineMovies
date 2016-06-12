@@ -21,4 +21,8 @@ angular.module('projetCineFilms')
   $scope.connect = function (email, password) {
     user.connect(email, password);
   };
+  
+  $scope.redirectCreateUserId = function() {
+    $location.path('/createuser');
+  }
 });

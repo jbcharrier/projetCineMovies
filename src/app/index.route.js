@@ -15,6 +15,10 @@
         templateUrl: 'app/login/views/authent.html',
         controller: 'loginCtrl'
       })
+      .when('/createuser', {
+        templateUrl: 'app/login/views/createuser.html',
+        controller: 'createUserCtrl'
+      })
       .when('/create', {
         templateUrl: 'app/create/create.html',
         controller: 'CreateCtrl'

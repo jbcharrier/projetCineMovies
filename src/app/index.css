@@ -83,8 +83,19 @@ body {
 }
 
 
-/*My CSS*/
+/*********My additionnal CSS*********/
 
+
+
+/*Authent View*/
+
+#main-authent-view form {
+  margin-bottom: 5rem;
+}
+
+#main-authent-view h5 {
+  margin-bottom: 2rem;
+}
 
 .btn-return{
   margin-top: 20px;

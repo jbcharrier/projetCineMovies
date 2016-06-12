@@ -1,0 +1,16 @@
+<main id="main-createuser-view">
+<div class="title-connection">
+  <h4>Merci de créer vos identifiants pour accéder à Ciné-Movies :</h4>
+</div>
+<form ng-submit="createNewUser(email, password)" name="loginForm">
+  <div class="form-group">
+    <label for="inputemail">Votre adresse email</label>
+    <input type="text" class="form-control" name="loginForm" id="inputemail" placeholder="Votre email" required ng-model="email">
+  </div>
+  <div class="form-group">
+    <label for="inputpassword">Password</label>
+    <input type="password" class="form-control" id="inputpassword" placeholder="Votre mot de passe" name="loginForm" ng-model="password" required>
+  </div>
+  <button type="submit" class="btn btn-success">Créer mes identifiants</button>
+</form>
+</main>
