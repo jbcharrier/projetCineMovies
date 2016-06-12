@@ -1,37 +1,20 @@
 angular.module('projetCineFilms')
-  .factory('DataFilm', function ($firebaseArray, $q, SERVER_URL) {
+  .factory('Movies', function ($firebaseArray, $q, SERVER_URL) {
 
-    
+
 ////////////////////////////////////////////
-///////////////// Load BDD /////////////////
+/////////////////// BDD ////////////////////
 ////////////////////////////////////////////
 
     var bddRef = new Firebase(SERVER_URL);
-    var datas = [];
-    var bddLoaded = $q.defer();
-    var accessBdd = function(){
-      datas = $firebaseArray(bddRef);
-      datas.$loaded(function(){
-        bddLoaded.resolve(true);
-      });
-    };
-    accessBdd();
+    var datas = $firebaseArray(bddRef);
 
 
 ////////////////////////////////
 ///////////// CRUD /////////////
 ////////////////////////////////
 
-    function setDatas(){
-      datas.$add();
-    }
-
-    function getList (){
-      console.log(datas);
-      return datas;
-    }
-
-    function showFilm(id){
+    function showMovie(id){
       var filmToShow;
       for(var i = 0; i < datas.length; i++){
         if(datas[i].name == id){
@@ -41,11 +24,11 @@ angular.module('projetCineFilms')
       return filmToShow;
     }
 
-    function saveFilm(film){
-      datas.$save(film);
+    function saveMovie(movie){
+      datas.$save(movie);
     }
 
-    function deleteFilm(id){
+    function eraseMovie(id){
       for(var j = 0; j < datas.length; j++){
         if(datas[j].name == id){
           datas.$remove(datas[j]).then(function (){
@@ -60,50 +43,36 @@ angular.module('projetCineFilms')
 ///////////// Upload de l'affiche et Create /////////////
 /////////////////////////////////////////////////////////
 
-    var fileToUpload = null;
-    var fileInput = $('#file-upload');
 
-    fileInput.change(function(){
-      var file = $(this).get(0).files[0];
-      var reader = new FileReader(file);
 
-      reader.addEventListener('load', function(){
-        fileToUpload = reader.result;
-      }, false);
-
-      if(file) {
-        reader.readAsDataURL(file);}
-    });
-
-    function createFilm(film){
-      var dateRealase = film.releaseDate.getTime();
+    function createMovie(movie){
+      var dateRealase = movie.releaseDate.getTime();
       var myNewFilm = {
+        "name": movie.name,
+        "realisator": movie.realisator,
         "actors": {
-          "name": film.actors
+          "name": movie.actors
         },
-        "name": film.name,
-        "affichefile": fileToUpload,
-        "rating": film.rating,
-        "realisator": film.realisator,
-        "releaseDate": dateRealase
+        "affichefile": movie.img,
+        "releaseDate": dateRealase,
+        "rating": movie.rating
       };
-      if(!film.affiche){
+      if(!movie.img){
         myNewFilm.affichefile = null;
       }
-      datas.$add(myNewFilm).then(function (){
-        console.log('The new film is now saved in the database !');
-      });
+      return datas.$add(myNewFilm).then(function (movie){
+        console.log('The new film is now saved in the database !' + movie);
+      })
+        .catch(function(error){
+        });
     }
 
     return {
       connection: datas,
-      listFilms: function(){ return datas;},
-      hasLoaded: function(){ return bddLoaded.promise;},
-      loadDatas: setDatas,
-      getList: getList,
-      details: showFilm,
-      newFilm: createFilm,
-      updateFilm: saveFilm,
-      eraseFilm: deleteFilm
+      getMovies: function(){ return datas;},
+      details: showMovie,
+      createMovie: createMovie,
+      updateMovie: saveMovie,
+      eraseMovie: eraseMovie
     }
   });

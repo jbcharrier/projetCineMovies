@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('projetCineFilms')
-  .controller('DetailsCtrl', function () {
+  .controller('MoviesCtrl', function () {
 
   });

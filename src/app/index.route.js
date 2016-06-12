@@ -7,10 +7,6 @@
 
   function routeConfig($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'app/list/list.html',
-        controller: 'ListCtrl'
-      })
       .when('/login', {
         templateUrl: 'app/login/views/authent.html',
         controller: 'loginCtrl'
@@ -19,24 +15,28 @@
         templateUrl: 'app/login/views/createuser.html',
         controller: 'createUserCtrl'
       })
-      .when('/create', {
+      .when('/movies', {
+        templateUrl: 'app/list/movies.html',
+        controller: 'MoviesCtrl'
+      })
+      .when('/movies/:id', {
+        templateUrl: 'app/details/movie.html',
+        controller: 'MovieCtrl'
+      })
+      .when('/movies/movie/create', {
         templateUrl: 'app/create/create.html',
         controller: 'CreateCtrl'
       })
-      .when('/details/:id', {
-        templateUrl: 'app/details/details.html',
-        controller: 'DetailsCtrl'
-      })
-      .when('/edit/:id', {
+      .when('/movies/edit/:id', {
         templateUrl: 'app/edit/edit.html',
         controller: 'EditCtrl'
       })
-      .when('/delete/:id', {
-        templateUrl: 'app/list/list.html',
-        controller: 'ListCtrl'
+      .when('/movies/delete/:id', {
+        templateUrl: 'app/list/movies.html',
+        controller: 'MoviesCtrl'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/movies'
       });
   }
 })();

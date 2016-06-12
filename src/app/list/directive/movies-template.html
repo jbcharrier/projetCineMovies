@@ -12,17 +12,17 @@
       </div>
     </div>
     <ul class="list-unstyled">
-      <li ng-repeat="film in films | filter:{name:mySearch}" class="filmInList">
+      <li ng-repeat="movie in movies | filter:{name:mySearch}" class="filmInList">
         <div class="col-sm-4">
-          <h6>{{ film.name }}</h6>
+          <h6>{{ movie.name }}</h6>
         </div>
         <div class="col-sm-8 text-right">
-          <a class="btn btn-default film-list" ng-href="#/details/{{film.name}}">Détails du film</a>
-          <a class="btn btn-primary film-list" ng-href="#/edit/{{film.name}}">Modifier</a>
-          <a class="btn btn-warning film-list" ng-href="#/delete/{{film.name}}">Supprimer</a>
+          <a class="btn btn-default film-list" ng-href="#/movies/{{movie.name}}">Détails du film</a>
+          <a class="btn btn-primary film-list" ng-href="#/movies/edit/{{movie.name}}">Modifier</a>
+          <a class="btn btn-warning film-list" ng-href="#/movies/delete/{{movie.name}}">Supprimer</a>
         </div>
       </li>
     </ul>
-    <a class="btn btn-lg btn-success addFilmBtn" ng-href="#/create">Ajouter un film</a>
+    <a class="btn btn-lg btn-success addFilmBtn" ng-href="#/movies/movie/create">Ajouter un film</a>
   </main>
 </div>
