@@ -10,6 +10,7 @@ angular.module('projetCineFilms')
     var datas = $firebaseArray(bddRef);
 
 
+
 ////////////////////////////////
 ///////////// CRUD /////////////
 ////////////////////////////////
@@ -39,22 +40,19 @@ angular.module('projetCineFilms')
     }
 
 
+
 /////////////////////////////////////////////////////////
 ///////////// Upload de l'affiche et Create /////////////
 /////////////////////////////////////////////////////////
 
 
-
     function createMovie(movie){
-      var dateRealase = movie.releaseDate.getTime();
       var myNewFilm = {
         "name": movie.name,
         "realisator": movie.realisator,
-        "actors": {
-          "name": movie.actors
-        },
-        "affichefile": movie.img,
-        "releaseDate": dateRealase,
+        "actors": movie.actors,
+        "img": movie.img,
+        "releaseDate": movie.releaseDate.getTime(),
         "rating": movie.rating
       };
       if(!movie.img){

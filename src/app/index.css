@@ -16,6 +16,11 @@
 
 /**********My CSS*********/
 
+
+.no-padd {
+  padding: 0;
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -136,6 +141,17 @@ body {
   margin-bottom: 4rem;
 }
 
+.removeAffiche{
+  margin-top: 1rem;
+}
+
+.addActor{
+  margin-bottom: 1.5rem;
+}
+
+.removeActor{
+  margin-top: 1.5rem;
+}
 
 
 /* Responsive: Portrait tablets and up */

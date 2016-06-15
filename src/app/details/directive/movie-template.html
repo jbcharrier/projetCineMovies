@@ -2,12 +2,16 @@
   <main class="text-center mainDetailsView">
     <h2>{{movie.name}}</h2>
     <div class="text-center">
-      <img ng-src="{{movie.affichefile}}" alt="Pas d'affiche disponible" style="width:400px;height:600px">
+      <img ng-src="{{movie.img}}" alt="Pas d'affiche disponible" style="width:400px;height:600px">
     </div>
     <ul class="list-unstyled">
       <li>Sorti le : {{movie.releaseDate | date : mediumDate}}</li>
       <li>Réalisé par : {{movie.realisator}}</li>
-      <li>Avec : <span ng-repeat="actor in movie.actors">{{actor}}</span></li>
+      <li>Avec :
+        <div ng-repeat="actor in movie.actors">
+          <span >{{actor.name}}</span>
+        </div>
+      </li>
       <li>Avis sur le film : {{movie.rating}}</li>
     </ul>
     <a class="btn btn-default btn-sm btn-primary btn-return" ng-href="/#/movies">Retour à la liste</a>

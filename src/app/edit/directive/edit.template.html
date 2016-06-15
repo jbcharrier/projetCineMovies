@@ -12,7 +12,10 @@
       <div class="form-group">
         <label for="inputText1" class="col-sm-2 control-label">Affiche du film</label>
         <div class="col-sm-10">
-          <img ng-src="{{movie.affichefile}}" alt="Pas d'affiche disponible" id="inputText1" width="100px" height="150px">
+          <img ng-src="{{movie.img}}" alt="Pas d'affiche disponible" id="inputText1" width="100px" height="150px" ng-model="movie.img">
+        </div>
+        <div class="col-sm-offset-2 col-sm-10">
+          <button class="btn btn-xs btn-danger removeAffiche">Supprimer</button>
         </div>
       </div>
       <div class="form-group">
@@ -21,12 +24,21 @@
           <input type="text" class="form-control" id="inputText2" ng-model="movie.realisator" placeholder="Nom du réalisateur">
         </div>
       </div>
-      <div class="form-group">
-        <label for="inputText3" class="col-sm-2 control-label">Acteurs</label>
+
+      <div class="form-group" ng-repeat="actor in movie.actors">
+        <label for="inputText3" class="col-sm-2 control-label">Acteurs {{$index + 1}}</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputText3" ng-model="movie.actors.name" placeholder="Nom des acteurs">
+          <input type="text" class="form-control" id="inputText3" ng-model="actor.name" placeholder="Nom des acteurs">
+        </div>
+        <div class="col-sm-12 text-right">
+          <button class="btn btn-md btn-warning btn-default removeActor" ng-click="removeActor($index)">Retirer</button>
         </div>
       </div>
+
+      <div class="col-sm-6 col-sm-offset-6 text-right no-padd">
+        <button class="btn btn-md btn-success btn-default addActor" ng-click="addNewActor()">Ajouter un nouvel acteur</button>
+      </div>
+
       <div class="form-group">
         <label for="inputText4" class="col-sm-2 control-label">Sortie</label>
         <div class="col-sm-10">
@@ -47,12 +59,32 @@
       </div>
       <div class="form-group">
         <div class="text-right">
-          <button type="submit" class="btn btn-success btn-lg" ng-click="saveMovie(movie)">Enregistrer</button>
+          <button type="submit" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModalUpdate" ng-click="saveMovie(movie)">Enregistrer</button>
         </div>
       </div>
     </form>
     <div class="text-center">
       <a class="btn btn-default btn-sm btn-return" ng-href="/#/movies">Retour à la liste des films</a>
     </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModalUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">CONFIRMATION</h4>
+          </div>
+          <div class="modal-body text-center">
+            Votre modification a bien été enregistrée !
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </main>
 </div>

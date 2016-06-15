@@ -9,28 +9,35 @@ angular.module('projetCineFilms')
       scope: {
         data:'='
       },
-      controller: function($scope, $location, $routeParams, Movies, RATING) {
+      controller: function($scope, $location, $routeParams, $firebaseArray, Movies, RATING) {
+
         $scope.filmRating = RATING;
         $scope.movie = Movies.details($routeParams.id);
-        $scope.saveMovie = function() {
-          Movies.updateMovie($scope.movie)
-            .then(function(movie){
-            })
-            .catch(function(){
-            })
-        }
-      },
-      link: function (scope, element) {
-        var fileInput = element.find('#file-upload');
-        var fileToUpload = null;
 
-        fileInput.bind('change', function (fileUpload) {
-          var file = fileUpload.target.files[0];
-          var fileReader = new FileReader();
-          fileReader.onload = function (file) {
-            fileToUpload = file.target.result;
-            scope.movie.img = file.target.result;
-          };
+        $scope.addNewActor = function() {
+          $scope.movie.actors.push({});
+        };
+
+        $scope.removeActor = function(index) {
+          $scope.movie.actors.splice(index, 1);
+        };
+
+        $scope.saveMovie = function() {
+          Movies.updateMovie();
+        };
+
+      },
+      link: function (scope) {
+        var fileInput = $('#file-upload');
+
+        fileInput.change(function() {
+          var file = $(this).get(0).files[0];
+          var fileReader = new FileReader(file);
+
+          fileReader.addEventListener('load', function() {
+            scope.movie.img = fileReader.result;
+          }, false);
+
           if (file) {
             fileReader.readAsDataURL(file);
           }

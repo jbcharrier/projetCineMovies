@@ -2,5 +2,4 @@
 
 angular.module('projetCineFilms')
   .controller('EditCtrl', function () {
-
   });
