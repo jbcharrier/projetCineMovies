@@ -9,13 +9,16 @@ angular.module('projetCineFilms')
     $scope.movie.actors = [{}];
     $scope.movie.img = null;
 
-    $scope.addNewActor = function() {
+
+    $scope.addActor = function() {
       $scope.movie.actors.push({});
     };
+
 
     $scope.removeActor = function(index) {
       $scope.movie.actors.splice(index, 1);
     };
+
 
     $scope.createMovie = function() {
       Movies.createMovie($scope.movie)
@@ -24,7 +27,9 @@ angular.module('projetCineFilms')
         .catch(function(){
         })
     };
+    
 
+// Upload de l'affiche du film
     var fileInput = $('#file-upload');
 
     fileInput.change(function() {

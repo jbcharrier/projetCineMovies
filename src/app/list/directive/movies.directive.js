@@ -6,11 +6,18 @@ angular.module('projetCineFilms')
       restrict: 'E',
       templateUrl: 'app/list/directive/movies-template.html',
       scope: {
-        data:'='
+        movies:'='
       },
-      controller: function($scope, Movies, $routeParams){
-        $scope.movies = Movies.getMovies();
-        $scope.delete = Movies.eraseMovie($routeParams.id);
+      controller: function($scope, Movies){
+
+        $scope.delete = function(movie) {
+          Movies.deleteMovie(movie)
+          .then(function() {
+          })
+          .catch(function(error) {
+            console.log('error', error);
+          });
+        }
       }
     }
   });

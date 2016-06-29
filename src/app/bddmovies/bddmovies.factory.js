@@ -2,75 +2,79 @@ angular.module('projetCineFilms')
   .factory('Movies', function ($firebaseArray, $q, SERVER_URL) {
 
 
-////////////////////////////////////////////
-/////////////////// BDD ////////////////////
-////////////////////////////////////////////
-
     var bddRef = new Firebase(SERVER_URL);
-    var datas = $firebaseArray(bddRef);
+    var moviesList = $firebaseArray(bddRef);
 
 
-
-////////////////////////////////
-///////////// CRUD /////////////
-////////////////////////////////
-
-    function showMovie(id){
-      var filmToShow;
-      for(var i = 0; i < datas.length; i++){
-        if(datas[i].name == id){
-          filmToShow = datas[i];
-        }
-      }
-      return filmToShow;
-    }
-
-    function saveMovie(movie){
-      datas.$save(movie);
-    }
-
-    function eraseMovie(id){
-      for(var j = 0; j < datas.length; j++){
-        if(datas[j].name == id){
-          datas.$remove(datas[j]).then(function (){
-            console.log('The film is now removed from database !');
-          });
-        }
-      }
+    function getMovies() {
+      return moviesList;
     }
 
 
+    function getMovie(id) {
+      return moviesList.$loaded()
+      .then(function(data) {
+        var test = [];
+        data.map((element) => {
+          if(element.name == id){
+            test.push(element);
+          }
+        });
+        return test;
+      })
+      .catch(function(error) {
+        console.log('error', error);
+      });
+    }
 
-/////////////////////////////////////////////////////////
-///////////// Upload de l'affiche et Create /////////////
-/////////////////////////////////////////////////////////
+
+    function updateMovie(id) {
+      moviesList.$save(id)
+      .then(function(movie) {
+        console.log('movie', movie);
+      })
+      .catch(function(error) {
+        console.log('error', error);
+      });
+    }
 
 
-    function createMovie(movie){
-      var myNewFilm = {
+    function deleteMovie(movie) {
+      return moviesList.$remove(movie)
+      .then(function() {
+        console.log('The film is now removed from database !');
+      })
+      .catch(function(error) {
+        console.log('error', error)
+      });
+    }
+
+
+    function createMovie(movie) {
+      return moviesList.$add(
+        {
         "name": movie.name,
         "realisator": movie.realisator,
         "actors": movie.actors,
         "img": movie.img,
         "releaseDate": movie.releaseDate.getTime(),
         "rating": movie.rating
-      };
-      if(!movie.img){
-        myNewFilm.affichefile = null;
-      }
-      return datas.$add(myNewFilm).then(function (movie){
-        console.log('The new film is now saved in the database !' + movie);
+        }
+      )
+      .then(function(movie) {
+        console.log('movie', movie);
       })
-        .catch(function(error){
-        });
+      .catch(function(error) {
+        console.log('error', error);
+      });
     }
 
+
     return {
-      connection: datas,
-      getMovies: function(){ return datas;},
-      details: showMovie,
-      createMovie: createMovie,
-      updateMovie: saveMovie,
-      eraseMovie: eraseMovie
+      getMovies: getMovies,
+      getMovie: getMovie,
+      updateMovie: updateMovie,
+      deleteMovie: deleteMovie,
+      createMovie: createMovie
     }
   });
