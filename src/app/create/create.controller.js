@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('projetCineFilms')
-  .controller('CreateCtrl', function($scope, $location, Movies, RATING) {
+angular.module('projetCineFilms').controller('CreateCtrl', function($scope, $location, Movies, RATING) {
 
 
     $scope.filmRating = RATING;

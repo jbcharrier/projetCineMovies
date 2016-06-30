@@ -1,4 +1,5 @@
-angular.module('projetCineFilms')
+angular
+  .module('projetCineFilms')
   .factory('Movies', function ($firebaseArray, $q, SERVER_URL) {
 
 
@@ -14,13 +15,13 @@ angular.module('projetCineFilms')
     function getMovie(id) {
       return moviesList.$loaded()
       .then(function(data) {
-        var test = [];
+        var movie = [];
         data.map((element) => {
           if(element.name == id){
-            test.push(element);
+            movie.push(element);
           }
         });
-        return test;
+        return movie;
       })
       .catch(function(error) {
         console.log('error', error);

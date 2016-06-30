@@ -8,5 +8,3 @@ angular.module('projetCineFilms')
     {label: "****", value: "Top !"},
     {label: "*****", value: "Chef d'oeuvre !"}
   ]);
-
-
