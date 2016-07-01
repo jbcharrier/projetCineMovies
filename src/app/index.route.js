@@ -31,10 +31,6 @@
         templateUrl: 'app/edit/edit.html',
         controller: 'EditCtrl'
       })
-      .when('/movies/delete/:id', {
-        templateUrl: 'app/list/movies.html',
-        controller: 'MoviesCtrl'
-      })
       .otherwise({
         redirectTo: '/movies'
       });

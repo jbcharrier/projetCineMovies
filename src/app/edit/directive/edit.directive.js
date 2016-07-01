@@ -12,18 +12,23 @@ angular.module('projetCineFilms')
       controller: function($scope, $location, $routeParams, $firebaseArray, Movies, RATING) {
 
         $scope.filmRating = RATING;
-        $scope.movie = Movies.details($routeParams.id);
 
-        $scope.addNewActor = function() {
+        Movies.getMovie($routeParams.id).then(function(movie) {
+          $scope.movie = movie[0];
+        });
+
+
+        $scope.addActor = function() {
           $scope.movie.actors.push({});
         };
 
         $scope.removeActor = function(index) {
+          console.log(index);
           $scope.movie.actors.splice(index, 1);
         };
 
-        $scope.saveMovie = function() {
-          Movies.updateMovie();
+        $scope.saveMovie = function(movie) {
+          Movies.updateMovie(movie);
         };
 
       },

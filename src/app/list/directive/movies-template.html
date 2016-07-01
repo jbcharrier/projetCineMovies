@@ -19,7 +19,7 @@
         <div class="col-sm-8 text-right">
           <a class="btn btn-default film-list" ng-href="#/movies/{{movie.name}}">Détails du film</a>
           <a class="btn btn-primary film-list" ng-href="#/movies/edit/{{movie.name}}">Modifier</a>
-          <a class="btn btn-warning film-list" ng-href="#/movies/delete/{{movie.name}}">Supprimer</a>
+          <a class="btn btn-warning film-list" ng-click="delete(movie)">Supprimer</a>
         </div>
       </li>
     </ul>
