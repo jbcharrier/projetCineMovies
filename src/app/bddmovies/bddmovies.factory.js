@@ -15,13 +15,14 @@ angular
     function getMovie(id) {
       return moviesList.$loaded()
       .then(function(data) {
-        var movie = [];
-        data.map((element) => {
+        console.log('data', data);
+        var myMovie = [];
+        data.map(function(element) {
           if(element.name == id){
-            movie.push(element);
+            myMovie.push(element);
           }
         });
-        return movie;
+        return myMovie;
       })
       .catch(function(error) {
         console.log('error', error);
