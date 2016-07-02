@@ -25,6 +25,10 @@ $ npm install -g bower
 
 ### Installing
 ```
+To install the application
+$ npm install
+$ bower install
+
 To launch the application :
 $ gulp serve
 ```
