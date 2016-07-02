@@ -20,7 +20,7 @@ $ sudo apt-get install nodejs
 $ sudo apt-get install npm
 
 3.And finally, install bower 
-$ npm install bower examples
+$ npm install -g bower
 ```
 
 ### Installing
